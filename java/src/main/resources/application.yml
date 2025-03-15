@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: tools
+  security:
+    user:
+      name: admin
+      password: admin
+      roles:
+      - ADMIN
+  web:
+    resources:
+      static-locations:
+      - file:///D:/works/imgMngRatBt/app/build
+      - classpath:/static/
+      - classpath:/public/
+      - classpath:/resources/
+      - classpath:/META-INF/resources/
+  datasource:
+    hikari:
+      connection-test-query: select * from dual
