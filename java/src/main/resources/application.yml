@@ -9,12 +9,25 @@ spring:
       - ADMIN
   web:
     resources:
-      static-locations:
-      - file:///D:/works/imgMngRatBt/app/build
+      static-locations:      
+      - classpath:/app/
       - classpath:/static/
-      - classpath:/public/
-      - classpath:/resources/
-      - classpath:/META-INF/resources/
   datasource:
+    url: jdbc:mysql://localhost:3336/mydb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: verysecret
+    driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
-      connection-test-query: select * from dual
+      pool-name: HikariPool
+      maximum-pool-size: 10    # 최대 커넥션 개수
+      minimum-idle: 5          # 최소 아이들 커넥션 개수
+      idle-timeout: 30000      # 아이들 타임아웃 (30초)
+      max-lifetime: 1800000    # 최대 커넥션 수명 (30분)
+      connection-timeout: 30000 # 커넥션 타임아웃 (30초)
+      connection-test-query: select 1 from dual 
+      #jpa:
+      #hibernate:            
+          #show-sql: true
+          #ddl-auto: create-drop
+server:
+  port: 8082
