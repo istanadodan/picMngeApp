@@ -1,9 +1,9 @@
 pluginManagement {
 	repositories {
-		maven {
-        	url "http://localhost:8081/repository/maven-public/"
-        	allowInsecureProtocol = true
-    	}
+		// maven {
+    //     	url "http://localhost:8081/repository/maven-public/"
+    //     	allowInsecureProtocol = true
+    // 	}
 		maven { url 'https://repo.spring.io/milestone' }
 		maven { url 'https://repo.spring.io/snapshot' }
 		gradlePluginPortal()

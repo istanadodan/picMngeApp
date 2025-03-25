@@ -21,17 +21,20 @@ configurations {
 
 repositories {
 	mavenCentral()
-	maven {
-        url "http://localhost:8081/repository/maven-public/"
-        allowInsecureProtocol = true
-    }
+	// maven {
+  //       url "http://localhost:8081/repository/maven-public/"
+  //       allowInsecureProtocol = true
+  //   }
 	maven { url 'https://repo.spring.io/milestone' }
 	maven { url 'https://repo.spring.io/snapshot' }
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security'	
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.mysql:mysql-connector-j'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -41,5 +44,11 @@ dependencies {
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+	// useJUnitPlatform()
+}
+
+jar {
+	manifest {
+		attributes 'Main-class':'img.camera.tools.ToolsApplication'
+	}
 }
